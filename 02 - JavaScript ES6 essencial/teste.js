@@ -1,129 +1,92 @@
-// const name = 'Foo';
-// const lastName = String('Bar');
+// const arr1 = [2];
+// const arr2 = Array.from(2);
+// const arr3 = Array.of(2);
+// const arr4 = Array(2);
+// const arr5 = new Array(2);
 
-// console.log(name.constructor === lastName.constructor);
-// console.log(name.prototype === String.prototype);
-// console.log(lastName.__proto__ === String.prototype);
-// console.log(name.__proto__.split === lastName.__proto__.split);
+// console.log(arr1);
+// console.log(arr2);
+// console.log(arr3);
+// console.log(arr4);
+// console.log(arr5);
 
-// function Pessoa(nome) {
-//   this.nome = nome;
-// }
+// const person = ['Cris'];
 
-// function PessoaFisica(nome, cpf) {
-//   Pessoa.call(this, nome);
-//   this.cpf = cpf;
-// }
+// person.push('James', 'Jenny');
+// person.push('John');
+// console.log(person);
 
-// function PessoaJuridica(nome, cnpj) {
-//   Pessoa(nome);
-//   this.cnpj = cnpj;
-// }
+// const frutas = ['melancia', 'laranja', 'acerola'];
 
-// const pessoaFisica = new PessoaFisica('Foo', '123.456.670-0');
-// const pessoaJuridica = new PessoaJuridica('Bar', '12.345.678/9012-34');
+// //no - frutas.shift();
+// //ok - frutas.pop();
+// //ok - frutas.splice(2, 1);
+// //no -  frutas.slice(2, 1);
+// frutas.unshift();
 
-// console.log(pessoaFisica);
-// console.log(pessoaJuridica);
+// console.log(frutas);
 
-// function Pessoa(nome, idade) {
-//   this.nome = nome;
-//   this.idade = idade;
+// const frutas = ['maracujá', 'melancia', 'abacaxi', 'caju'];
+// // frutas.splice(2, 2, 'amora'); ok
+// // frutas.splice('amora', 2, 2); não
+// // frutas.pop(2, 'amora'); não
+// // frutas.slice(2, 2, 'amora');
+// console.log(frutas);
+
+// const familiaPai = ['Avó Zeca', 'Avô Aroldo'];
+// const familiaMae = ['Avô Carlos', 'Primo João Paulo'];
+
+// const familiaFilho = familiaPai.concat(familiaMae);
+
+// console.log(familiaPai);
+// console.log(familiaMae);
+// console.log(familiaFilho);
+
+// const colaboradores = [
+//   { nome: 'Cris', horasTrabalhadas: 220 },
+//   { nome: 'Rebecca', horasTrabalhadas: 210 },
+// ];
+
+// function adicionaSalario(colaborador) {
+//   const salario = colaborador.horasTrabalhadas * 50;
+//   colaborador.salario = salario;
 
 //   return {
-//     nome,
-//     idade: 20,
-//     falar() {
-//       console.log('Objeto falar');
-//     },
+//     salario,
 //   };
 // }
 
-// Pessoa.prototype.falar = function () {
-//   console.log('Prototype Falar');
-// };
+// const colaboradoresComSalario = colaboradores.map(adicionaSalario);
 
-// const pessoa = new Pessoa('Foo', 30);
-// console.log('01', pessoa);
-// console.log('02', pessoa.constructor === Pessoa);
-// console.log('03', pessoa.constructor === Object);
-// console.log('04', pessoa.__proto__.falar === undefined);
-// console.log('05', pessoa.falar());
+// console.log(colaboradoresComSalario);
 
-// function Conta() {
-//   Conta.prototype.rendimento = 0;
-//   Conta.prototype.depositar = function () {};
-//   Conta.prototype.retirar = function () {};
-//   Conta.prototype.exibirSaldo = function () {
-//     return `O Saldo da conta é ${this.saldo}.`;
-//   };
+// const frutas = ['amora', ['laranja', ['melancia'], 'acerola']];
+// console.log(frutas.flat(2));
+
+// const pessoas = ['Cris', 'Alexandre', 'Pablo', 'Cris'];
+
+// console.log(pessoas.indexOf('Cris'));
+// console.log(pessoas.findIndex((nome) => nome === 'Cris'));
+// console.log(pessoas.lastIndexOf('Cris'));
+// console.log(pessoas.find((nome) => nome === 'Cris'));
+
+// const alunos = [
+//   { nome: 'Cris', nota: 10 },
+//   { nome: 'Alexendre', nota: 7 },
+//   { nome: 'Pablo', nota: 4 },
+// ];
+
+// function alunoAprovado(aluno) {
+//   return aluno.nota >= 7;
 // }
 
-// function ContaPoupanca() {
-//   this.exibirSaldo = function () {
-//     return 'Operacao não disponível';
-//   };
-// }
+// console.log(alunos.filter(alunoAprovado));
+// console.log(alunos.some(alunoAprovado));
+// console.log(alunos.every(alunoAprovado));
 
-// ContaPoupanca.prototype.rendimento = 0.03;
-// ContaPoupanca.prototype = Object.create(Conta.prototype);
+const frutas = ['amora', 'laranja', 'melancia', 'acerola'];
 
-// const contaPoupanca = new ContaPoupanca();
-// console.log('01-', contaPoupanca instanceof ContaPoupanca);
-// console.log('02-', contaPoupanca);
-// console.log('03-', contaPoupanca.exibirSaldo());
-// console.log('04-', contaPoupanca.rendimento);
-// console.log('05-', contaPoupanca.__proto__.exibirSaldo());
-
-// class Pessoa {
-//   #nome = '';
-//   constructor(nome) {
-//     this.#nome = nome;
-//   }
-//   get nome() {
-//     return `seu nome é ${this.#nome}`;
-//   }
-
-//   set nome(novoNome) {
-//     this.#nome = novoNome;
-//   }
-// }
-
-// const pessoa = new Pessoa();
-
-// console.log(pessoa);
-// console.log(pessoa.nome);
-// pessoa.nome = 'Foo';
-// console.log(pessoa.nome);
-
-// class ID {
-//   static #contador = 0;
-
-//   static get contador() {
-//     return this.#contador;
-//   }
-
-//   static incrementaContador() {
-//     return ++this.#contador;
-//   }
-// }
-
-// class Cliente {
-//   #id = 0;
-//   constructor() {
-//     this.#id = ID.incrementaContador();
-//   }
-
-//   get id() {
-//     return this.#id;
-//   }
-// }
-
-// const c1 = new Cliente();
-// console.log(`Contador atual ${ID.contador}`);
-
-// const c2 = new Cliente();
-// const c3 = new Cliente();
-
-// console.log(`Contador atual ${ID.contador}`);
-// console.log(c1);
+const sortedFrutas = frutas.sort((a, b) => {
+  return a.localeCompare(b);
+});
+console.log(sortedFrutas.reverse());
